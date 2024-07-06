@@ -14,10 +14,30 @@
     And also, I want you to know that I've been longing for your love.😔 
     I really loved you so much 👉🏻👈🏻❤️. <h2><h2>
     So I have a question for you, Can you forgive me?</h2>
-    <form action="https://formspree.io/buensucesoglaziljane@gmail.com" method="POST">
         <div class="remember-forgot">
          <label><input type="checkbox"> YES <input type="checkbox"> NO</label>
         <input type="submit" value="Submit">
     </form>
 </body>
 </html>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
+    
+    // Set up the email
+    $to = "buensucesoglaziljane@gmail.com;
+    $subject = "New Form Submission";
+    $body = "Name: $name\nEmail: $email\nMessage:\n$message";
+    $headers = "From: $email";
+
+    // Send the email
+    if (mail($to, $subject, $body, $headers)) {
+        echo "Email sent successfully!";
+    } else {
+        echo "Email sending failed.";
+    }
+}
+?>
